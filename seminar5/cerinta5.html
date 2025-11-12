@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda Contacte</title>
+
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #c3d1ff;
+      }
+      h1,
+      h2 {
+        text-align: center;
+        color: #000033;
+        margin-top: 64px;
+      }
+      table {
+        width: 100%;
+        margin: 25px 0;
+        background-color: white;
+        border-radius: 8px;
+      }
+      th,
+      td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #dddddd;
+      }
+      th {
+        background-color: #3442db;
+        color: white;
+        font-weight: 600;
+        border-radius: 8px 8px 0px 0px;
+      }
+      tr:hover {
+        background-color: #f1f8ff;
+      }
+      form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      input {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        flex: 1;
+      }
+      .form-row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #3006bb;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #135fe4;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>AGENDA CONTACTE</h1>
+
+    <table id="tabelContacte">
+      <thead>
+        <tr>
+          <th>Nume</th>
+          <th>Telefon</th>
+        </tr>
+      </thead>
+      <tbody id="bodyContacte"></tbody>
+    </table>
+
+    <h2>Adauga un contact nou:</h2>
+    <form id="formContact">
+      <div class="form-row">
+        <input type="text" id="inputNume" placeholder="Nume contact" required />
+        <input
+          type="text"
+          id="inputTelefon"
+          placeholder="Numar de telefon"
+          required
+        />
+        <button type="submit">Adauga</button>
+      </div>
+    </form>
+
+    <script>
+      window.onload = () => {
+        const form = document.getElementById("formContact");
+        const inputNume = document.getElementById("inputNume");
+        const inputTelefon = document.getElementById("inputTelefon");
+        const tableBody = document.getElementById("bodyContacte");
+
+        const adaugaContact = (nume, telefon) => {
+          const row = document.createElement("tr");
+
+          const celulaNume = document.createElement("td");
+          celulaNume.textContent = nume.trim();
+
+          const celulaTelefon = document.createElement("td");
+          celulaTelefon.textContent = telefon.trim();
+
+          row.appendChild(celulaNume);
+          row.appendChild(celulaTelefon);
+          tableBody.appendChild(row);
+
+          const mesajTabelGol = tableBody.querySelector(".mesaj-tabel-gol");
+          if (mesajTabelGol) mesajTabelGol.remove();
+        };
+
+        const handleAdaugare = (e) => {
+          e.preventDefault();
+
+          const nume = inputNume.value.trim();
+          const telefon = inputTelefon.value.trim();
+
+          if (nume === "" || telefon === "") {
+            alert("Ambele campuri sunt necesare!");
+            return;
+          }
+
+          adaugaContact(nume, telefon);
+          form.reset();
+        };
+
+        form.onsubmit = handleAdaugare;
+
+        if (tableBody.children.length === 0) {
+          const emptyRow = document.createElement("tr");
+          const emptyCell = document.createElement("td");
+          emptyCell.colSpan = 2;
+          emptyCell.className = "mesaj-tabel-gol";
+          emptyCell.textContent = "Niciun contact adaugat inca.";
+          emptyRow.appendChild(emptyCell);
+          tableBody.appendChild(emptyRow);
+        }
+      };
+    </script>
+  </body>
+</html>
