@@ -1,0 +1,38 @@
+<html lang="en">
+  <head> </head>
+  <body>
+    <div>
+      <h2>Adaugare Date</h2>
+      <form>
+        <input id="inputName" type="text" placeholder="Nume" />
+        <br />
+        <br />
+        <input id="inputAge" type="number" placeholder="Varsta" />
+        <br />
+        <br />
+        <input value="Adauga" onclick="sendData()" type="button" />
+        <br /><br />
+      </form>
+    </div>
+
+    <div>
+      <h2>Cautare dupa ID</h2>
+      <form>
+        <input id="inputId" type="number" placeholder="Introduceii ID-ul" />
+        <br />
+        <br />
+        <input value="Caută" onclick="getById()" type="button" />
+        <br /><br />
+      </form>
+    </div>
+
+    <div>
+      <h3>Rezultat căutare:</h3>
+      <div id="searchResult"></div>
+    </div>
+
+    <div id="tableData"></div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="index.js"></script>
+</html>

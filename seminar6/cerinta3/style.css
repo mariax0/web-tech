@@ -1,0 +1,71 @@
+.container {
+  width: 300px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+.row {
+  width: 100%;
+  overflow: hidden;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  float: left; /* pentru 3x3 grid */
+  background-color: aliceblue;
+  border: 1px solid #333;
+  box-sizing: border-box; /* include border in width */
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.square:hover {
+  background-color: rgb(210, 235, 255);
+}
+
+.square:active {
+  transform: scale(0.95);
+}
+
+.square:not(:empty) {
+  cursor: default;
+}
+
+.square.x {
+  color: #76007f;
+}
+
+.square.o {
+  color: #00686d;
+}
+
+#status {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 50px 0px 25px 0px;
+  min-height: 30px;
+  color: #333;
+}
+
+#reset {
+  background: #3b27ae;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.2s;
+}
+
+#reset:hover {
+  background: #1f69e0;
+}
